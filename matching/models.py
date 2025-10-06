@@ -5,9 +5,12 @@ from django.conf import settings
 class Interaction(models.Model):
     LIKE = "like"
     PASS = "pass"
+    BLOCK = "block"
+
     ACTION_CHOICES = [
         (LIKE, "Like"),
         (PASS, "Pass"),
+        (BLOCK, "Block"),
     ]
 
     from_user = models.ForeignKey(
@@ -41,3 +44,14 @@ class Match(models.Model):
 
     def __str__(self):
         return f"Match({self.user1.username}, {self.user2.username})"
+
+
+
+class Notification(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="notifications")
+    message = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_read = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Notification for {self.user.username}"
