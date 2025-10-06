@@ -6,7 +6,8 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 from users.models import Profile
-from users.serializers import RegisterSerializer, UserSerializer, MyTokenObtainPairSerializer, ProfileSerializer
+from users.serializers import (RegisterSerializer, UserSerializer,
+                               MyTokenObtainPairSerializer, ProfileSerializer)
 
 
 
