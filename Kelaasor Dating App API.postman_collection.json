@@ -1,0 +1,326 @@
+{
+	"info": {
+		"_postman_id": "ffc36784-c735-4b76-9239-f69a1a34ae91",
+		"name": "Kelaasor Dating App API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22116916"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"taha\",\n  \"email\": \"taha@example.com\",\n  \"password\": \"12345678\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/users/register/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"taha@example.com\",\n  \"password\": \"12345678\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/users/token/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"refresh\": \"<refresh_token_here>\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/users/token/refresh/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"token",
+								"refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users/all/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Nearby Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users/nearby/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"nearby",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Matching",
+			"item": [
+				{
+					"name": "Like User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"to_user\": 5\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/match/like/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"match",
+								"like",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Respond to Like",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"from_user\": 7,\n  \"action\": \"like\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/match/respond/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"match",
+								"respond",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Notifications",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/match/notifications/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"match",
+								"notifications",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Block User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/match/block/1/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"match",
+								"block",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unblock User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/match/unblock/1/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"match",
+								"unblock",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000/api"
+		},
+		{
+			"key": "access_token",
+			"value": ""
+		}
+	]
+}
